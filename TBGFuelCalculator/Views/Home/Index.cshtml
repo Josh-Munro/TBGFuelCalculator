@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Savings Calculator";
+}
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+</head>
+
+<script>
+
+    $(document).ready(function () {
+        $('#box').css('background-color', 'red');
+        $('.container').css('margin-top', '100px');
+        $('.rowContainer').css('margin-top', '100px');
+    })
+</script>
+
+<div class="container">
+
+    <div class="text-center">
+        <h1 class="display-4 blue">TBG Fuel Calculator</h1>
+
+
+        <div class="row rowContainer">
+            @using (Html.BeginForm("PostData", "Home"))
+            {
+
+                <div class="col-sm" id="box">
+                    <form>
+                        <h2>Car Amount</h2>
+                        <input type="range" name="c" min="0" max="20" value="0" oninput="this.form.ci.value=this.value" />
+                        <input type="number" name="ci" min="0" max="20" value="0" oninput="this.form.c.value=this.value" />
+
+                        <h2>Tank Size</h2>
+                        <input type="range" name="t" min="0" max="20" value="0" oninput="this.form.ti.value=this.value" />
+                        <input type="number" name="ti" min="0" max="20" value="0" oninput="this.form.t.value=this.value" />
+
+                        <input type="submit" value="Calculate Savings" />
+
+                    </form>
+                </div>
+
+                <div class="col-sm">
+                    <h2>@ViewBag.message</h2>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
